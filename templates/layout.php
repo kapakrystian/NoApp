@@ -13,6 +13,8 @@ use App\Constants\Permissions; ?>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="public/style.css" />
   <title>NoApp</title>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 
 <body>
@@ -219,9 +221,10 @@ use App\Constants\Permissions; ?>
       <?php require_once("templates/pages/{$page}.php"); ?>
     </main>
   <?php } ?>
-  
+
 
   <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 
 </html>

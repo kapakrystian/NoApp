@@ -6,7 +6,11 @@ class TasksController extends Controller
 {
     public function indexAction()
     {
-
-        $this->view->render('tasks');
+        if (true) {
+            $tasks = $this->tasksModel->getTask();
+        }
+        $this->view->render('tasks', $tasks);
     }
+
+    
 }

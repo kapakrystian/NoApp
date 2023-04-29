@@ -2,11 +2,17 @@
 
 namespace App\Controllers;
 
+use App\Constants\TasksStatus;
+
 class TasksPendingController extends Controller
 {
     public function indexAction()
     {
-
-        $this->view->render('tasksPending');
+        if (true) {
+            $tasks = $this->tasksModel->getTask(TasksStatus::PENDING);
+        }
+        $this->view->render('tasks', $tasks);
     }
+
+     
 }
