@@ -1,25 +1,29 @@
-<!DOCTYPE html>
-<html lang="pl">
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-10 col-lg-8 m-auto">
+                <h4 class="my-4 text-uppercase"><span><?php echo $_SESSION['name_surname'] ?> - godziny pracy</span></h4>
+                <div class="table-responsive">
+                    <table class="table table-striped table-light">
+                        <thead>
+                            <tr>
+                                <th>Dzień</th>
+                                <th>Godzina rozpoczęcia</th>
+                                <th>Godzina zakończenia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($params as $row) : ?>
+                                <tr>
+                                    <td><?php echo $row['day']; ?></td>
+                                    <td><?php echo $row['start_time']; ?></td>
+                                    <td><?php echo $row['end_time']; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
-    <link rel="stylesheet" href="./public/style.css" />
-    <title>NoApp</title>
-</head>
-
-<body>
-    <div>
-        <h5>WCZYTAJ WIDOK: CZAS PRACY</h5>
-        <h5><?php echo $params['resultWorktime'] ?? '' ?></h5>
-        <h5><?php echo $page ?></h5>
-        <!-- <?php echo htmlentities($action) ?> -->
-    </div>
-</body>
-<script src="./js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+            </div>
+        </div>
+</section>

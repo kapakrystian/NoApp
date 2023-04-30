@@ -21,6 +21,7 @@ class LoginController extends Controller
                 $_SESSION['user_name'] = $checkingUser[0]->username;
                 $_SESSION['logged_in'] = true;
                 $_SESSION['permissions'] = $checkingUser[0]->permissions;
+                $_SESSION['name_surname'] = $checkingUser[0]->name_surname;
 
                 $this->request->redirect('dashboard');
             }

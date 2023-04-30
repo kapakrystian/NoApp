@@ -26,7 +26,11 @@
                                 <label for="username" class="mt-2 form-label">Nazwa użytkownika</label>
                                 <input type="text" name="username" class="form-control" id="username" required>
                                 <label for="password" class="mt-2 form-label">Hasło</label>
-                                <input type="password" name="password" class="form-control" id="password" required>
+                                <input type="password" name="password" class="form-control" id="password" minlength="8" pattern="^(?=.*\d).{8,}$" title="Hasło musi zawierać minimum 8 znaków, w tym jedną cyfrę." required>
+                                <label for="name_surname" class="mt-2 form-label">Imię i nazwisko</label>
+                                <input type="text" name="name_surname" class="form-control" pattern="[A-ZŁŚ]{1}[a-ząęćżźńłóś]*\s[A-ZŁŚ]{1}[a-ząęćżźńłóś]*" title="Wprowadź poprawne imię i nazwisko z wielkich liter, oddzielone spacją" id="name_surname" required>
+                                <label for="phone" class="mt-2 form-label">Numer telefonu</label>
+                                <input type="tel" name="phone" class="form-control" id="phone" pattern="[0-9]{9}" title="Wpisz 9-cyfrowy numer telefonu" required>
                                 <div class="text-center mt-3">
                                     <button class="btn btn-dark" type="submit" name="signupBtn" value="Signup">Utwórz konto</button>
                                 </div>

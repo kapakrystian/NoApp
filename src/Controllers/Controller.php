@@ -8,6 +8,7 @@ use App\View;
 use App\Request;
 use App\Constants\Permissions;
 use App\Models\TasksModel;
+use App\Models\HoursModel;
 
 //kontroler abstrakcyjny
 abstract class Controller implements ControllerInterface
@@ -24,6 +25,7 @@ abstract class Controller implements ControllerInterface
     protected LoginModel $loginModel;
     protected RegisterModel $registerModel;
     protected TasksModel $tasksModel;
+    protected HoursModel $hoursModel;
 
     //konstruktor tworzący obiekty poszczególnych modeli i widoków
     public function __construct()
@@ -31,6 +33,7 @@ abstract class Controller implements ControllerInterface
         $this->loginModel = new LoginModel(self::$configuration);
         $this->registerModel = new RegisterModel(self::$configuration);
         $this->tasksModel = new TasksModel(self::$configuration);
+        $this->hoursModel = new HoursModel(self::$configuration);
 
         $this->view = new View();
         $this->request = new Request();

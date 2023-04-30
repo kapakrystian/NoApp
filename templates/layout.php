@@ -50,7 +50,7 @@ use App\Constants\Permissions; ?>
 
           <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) { ?>
             <div class="text-white text-muted pt-2">
-              <span><?php echo $_SESSION['user_name'] ?></span>
+              <span><?php echo $_SESSION['name_surname'] ?></span>
             </div>
             <ul class="navbar-nav">
               <li class="nav-item dropdown">

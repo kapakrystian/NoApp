@@ -21,11 +21,13 @@ class RegisterController extends Controller
             $username = trim($_POST["username"]);
             $email = trim($_POST["email"]);
             $password = trim($_POST["password"]);
+            $name_surname = trim($_POST["name_surname"]);
+            $phone = trim($_POST["phone"]);
 
-            if (empty($username) || empty($email) || empty($password)) {
+            if (empty($username) || empty($email) || empty($password) || empty($name_surname) || empty($phone)) {
                 $error_message = "Wypełnij wszystkie pola";
             } else {
-                if ($this->registerModel->registerUser($username, $email, $password)) {
+                if ($this->registerModel->registerUser($username, $email, $password, $name_surname, $phone)) {
                     $this->request->redirect('login');
 
                     exit();

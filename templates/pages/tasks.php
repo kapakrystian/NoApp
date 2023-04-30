@@ -36,7 +36,7 @@
             var status = $(this).val();
 
             $.ajax({
-                url: '',
+                url: 'tasks/edit',
                 method: 'POST',
                 data: {
                     task_id: taskId,

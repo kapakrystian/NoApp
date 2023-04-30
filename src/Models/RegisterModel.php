@@ -37,7 +37,7 @@ class RegisterModel extends Model implements RegisterModelInterface
     }
 
     //metoda dodająca użytkownika do bazy danych
-    public function registerUser($username, $email, $password)
+    public function registerUser($username, $email, $password, $name_surname, $phone)
     {
         if ($this->isUsernameTaken($username)) {
             return false;
@@ -48,7 +48,7 @@ class RegisterModel extends Model implements RegisterModelInterface
         }
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO users (username, email, password) VALUES ('{$username}', '{$email}', '{$hashedPassword}')";
+        $sql = "INSERT INTO users (username, email, password, name_surname, phone) VALUES ('{$username}', '{$email}', '{$hashedPassword}', '{$name_surname}', '{$phone}')";
         $result = $this->conn->query($sql);
         return $result;
     }

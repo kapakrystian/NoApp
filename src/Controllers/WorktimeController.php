@@ -6,7 +6,9 @@ class WorktimeController extends Controller
 {
     public function indexAction()
     {
-
-        $this->view->render('worktime');
+        if (true) {
+            $hours = $this->hoursModel->getHours();
+        }
+        $this->view->render('worktime', $hours);
     }
 }
