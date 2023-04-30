@@ -11,6 +11,4 @@ class TasksController extends Controller
         }
         $this->view->render('tasks', $tasks);
     }
-
-    
 }

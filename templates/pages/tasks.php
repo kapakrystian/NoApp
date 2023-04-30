@@ -8,20 +8,18 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body bg-secondary text-white">
-                        <h3 class="card-title"><?php echo $row['title']; ?> </h3>
-                        <h5 class="card-subtitle"><?php echo $row['importance']; ?></h5>
+                        <h3 class="card-title text-dark text-uppercase"><?php echo $row['title']; ?> </h3>
+                        <p class="card-subtitle text-danger"><?php echo $row['importance']; ?></p>
                         <p class="card-text my-2"><?php echo $row['content']; ?></p>
-                        <p class="card-footer">Autor: <?php echo $row['username']; ?></p>
-
-                        <form>
+                        <p class="text-dark">Autor: <?php echo $row['name_surname']; ?></p>
+                        <form class="card-footer">
                             <input type="hidden" name="task_id" value="<?php echo $row['id'] ?>" />
-                            <select class="form-select" name="task_stauts">
+                            <select class="form-select bg-secondary" name="task_stauts">
                                 <option value="<?php echo TasksStatus::PENDING ?>" <?php echo $row['status'] == TasksStatus::PENDING ? 'selected' : '' ?>>Oczekujące</option>
-                                <option value="<?php echo TasksStatus::IN_PROGRESS ?>" <?php echo $row['status'] == TasksStatus::IN_PROGRESS ? 'selected' : '' ?>>W trakcie realizacji</option>
+                                <option value="<?php echo TasksStatus::IN_PROGRESS ?>" <?php echo $row['status'] == TasksStatus::IN_PROGRESS ? 'selected' : '' ?>>Wykonywane</option>
                                 <option value="<?php echo TasksStatus::ENDING ?>" <?php echo $row['status'] == TasksStatus::ENDING ? 'selected' : '' ?>>Zakończone</option>
                             </select>
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -36,7 +34,7 @@
             var status = $(this).val();
 
             $.ajax({
-                url: 'tasks/edit',
+                url: '',
                 method: 'POST',
                 data: {
                     task_id: taskId,

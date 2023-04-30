@@ -6,7 +6,9 @@ class WorktimeAcceptController extends Controller
 {
     public function indexAction()
     {
-
-        $this->view->render('worktimeAccept');
+        if (true) {
+            $hours = $this->hoursModel->getHoursAdmin();
+        }
+        $this->view->render('worktimeAccept', $hours);
     }
 }

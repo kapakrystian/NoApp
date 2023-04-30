@@ -6,7 +6,9 @@ class PermissionsAddingController extends Controller
 {
     public function indexAction()
     {
-
-        $this->view->render('permissionsAdding');
+        if (true) {
+            $users = $this->hoursModel->getUsers();
+        }
+        $this->view->render('permissionsAdding', $users);
     }
 }

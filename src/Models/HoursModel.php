@@ -14,7 +14,7 @@ class HoursModel extends Model implements HoursModelInterface
         return $result;
     }
 
-    public function getHours($employee = '')
+    public function getHours($employee = ''): array
     {
         $employee = $_SESSION['user_id'];
 
@@ -27,6 +27,31 @@ class HoursModel extends Model implements HoursModelInterface
         if (!empty($employee)) {
             $sql .= "WHERE ho.employee = " . $employee;
         }
+
+        $result = $this->conn->query($sql);
+        return $result->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function getHoursAdmin(): array
+    {
+        $sql = "
+            SELECT ho.*, us.name_surname
+            FROM hours ho
+            INNER JOIN users us ON ho.employee = us.id
+            WHERE ho.status_ho = 'NIEPOTWIERDZONE'
+        ";
+
+        $result = $this->conn->query($sql);
+        return $result->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function getUsers(): array
+    {
+        $sql = "
+            SELECT *
+            FROM users us
+            WHERE us.permissions = 2
+        ";
 
         $result = $this->conn->query($sql);
         return $result->fetchAll(\PDO::FETCH_ASSOC);

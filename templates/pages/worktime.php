@@ -10,6 +10,8 @@
                                 <th>Dzień</th>
                                 <th>Godzina rozpoczęcia</th>
                                 <th>Godzina zakończenia</th>
+                                <th>Status</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -18,6 +20,12 @@
                                     <td><?php echo $row['day']; ?></td>
                                     <td><?php echo $row['start_time']; ?></td>
                                     <td><?php echo $row['end_time']; ?></td>
+                                    <td><?php echo $row['status_ho']; ?></td>
+                                    <td>
+                                        <button class="btn btn-secondary btn-sm" type="button" id="deleteHoursBtn">
+                                            <a class="text-decoration-none text-white" href="#">Usuń</a>
+                                        </button>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

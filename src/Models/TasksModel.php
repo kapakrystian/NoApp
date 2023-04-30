@@ -17,7 +17,7 @@ class TasksModel extends Model implements TasksModelInterface
     public function getTask(int $status = 0)
     {
         $sql = "
-            SELECT ta.*, us.username 
+            SELECT ta.*, us.name_surname
             FROM tasks ta
             INNER JOIN users us ON ta.autor = us.id
         ";
