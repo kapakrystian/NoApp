@@ -6,7 +6,9 @@ class MyProfileController extends Controller
 {
     public function indexAction()
     {
-
-        $this->view->render('myProfile');
+        if (true) {
+            $profile = $this->myProfileModel->getUserInformations();
+        }
+        $this->view->render('myProfile', $profile);
     }
 }

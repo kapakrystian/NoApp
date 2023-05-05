@@ -168,7 +168,7 @@ use App\Constants\Permissions; ?>
               <li>
                 <a href="permissionsAdding" class="nav-link px-3">
                   <span class="me-2"><i class="bi bi-alarm"></i></span>
-                  <span>Nadaj uprawnienia</span>
+                  <span>Użytkownicy</span>
                 </a>
               </li>
             <?php } ?>

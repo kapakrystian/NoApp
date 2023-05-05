@@ -1,9 +1,9 @@
-<?php 
+<?php
 
 namespace App\Constants;
 
-class Permissions 
+class Permissions
 {
-    public const ADMIN = 1;
-    public const USER = 2;
+    public const ADMIN = "ADMIN";
+    public const USER = "USER";
 }

@@ -20,6 +20,13 @@ button {
 .sidebar-link[aria-expanded="true"] .right-icon {
   transform: rotate(180deg);
 }
+.user-inf {
+  border: 1px solid #dddddd;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
+}
 @media (min-width: 992px) {
   body {
     overflow: auto !important;

@@ -1,5 +1,5 @@
 <section>
-    <div class="container mt-3 pt-5 ms-5">
+    <div class="container-fluid mt-5 w-75">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-10 col-lg-8 m-auto">
                 <h5 class="mt-5 md-3 text-uppercase">Wprowadź datę oraz czas pracy</h5>

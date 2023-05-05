@@ -50,7 +50,7 @@ class HoursModel extends Model implements HoursModelInterface
         $sql = "
             SELECT *
             FROM users us
-            WHERE us.permissions = 2
+            WHERE us.permissions = 'USER'
         ";
 
         $result = $this->conn->query($sql);
