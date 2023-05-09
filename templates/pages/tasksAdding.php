@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-10 col-lg-8 m-auto">
                 <h5 class="mt-5 md-3 text-uppercase">Dodaj nowe zadanie</h5>
-                <div class="mt-4 card">
+                <div class="mt-4 card user-inf">
                     <div class="card-body">
                         <form action="" method="POST" id="tasksAdding">
                             <label for="title" class="form-label">Tytuł</label>

@@ -42,3 +42,40 @@
             </div>
         </div>
 </section>
+
+<script>
+    $("table").DataTable({
+        dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'f>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+        columnDefs: [{
+            orderable: false,
+            searchable: false,
+            targets: [5, 4]
+        }],
+        language: {
+            "decimal": "",
+            "emptyTable": "Brak danych",
+            "info": "Wyświetlanie od _START_ do _END_ z _TOTAL_ rekordów",
+            "infoEmpty": "Wyświetlanie od 0 do 0 z 0 rekordów",
+            "infoFiltered": "(filtrowanie spośród _MAX_ wszystkich rekordów)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Wyświetl _MENU_ rekordów",
+            "loadingRecords": "Ładowanie...",
+            "processing": "Przetwarzanie...",
+            "search": "Szukaj:",
+            "zeroRecords": "Nie znaleziono pasujących rekordów",
+            "paginate": {
+                "first": "Pierwsza",
+                "last": "Ostatnia",
+                "next": "Następna",
+                "previous": "Poprzednia"
+            },
+            "aria": {
+                "sortAscending": ": aktywuj, by posortować kolumnę rosnąco",
+                "sortDescending": ": aktywuj, by posortować kolumnę malejąco"
+            }
+        }
+    });
+</script>

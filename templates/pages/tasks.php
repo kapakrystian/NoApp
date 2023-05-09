@@ -1,21 +1,22 @@
 <div class="container-fluid mt-2">
-    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-xl-3">
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-xl-3 d-flex flex-row">
         <?php
 
         use App\Constants\TasksStatus;
 
         foreach ($params as $row) : ?>
-            <div class="col my-2">
-                <div class="card">
+            <div class="col my-3">
+                <div class="card user-inf h-100">
                     <div class="card-header bg-secondary text-white d-flex justify-content-between">
                         <h3 class="card-title text-dark text-uppercase mt-2"><?php echo $row['title']; ?></h3>
-                        <button type="button" class="btn-close" aria-label="Close" onclick="deleteCard(<?php echo $row['id'] ?>)"></button>
+                        <button type="button" class="btn-close" aria-label="Close" onclick="deleteTask(<?php echo $row['id'] ?>)"></button>
                     </div>
                     <div class="card-body bg-secondary text-white">
                         <p class="card-subtitle text-danger"><?php echo $row['importance']; ?></p>
                         <p class="card-text my-2"><?php echo $row['content']; ?></p>
-                        <p class="text-dark">Autor: <?php echo $row['name_surname']; ?></p>
-                        <form class="card-footer">
+                    </div>
+                    <div class="card-footer bg-secondary d-flex align-items-end justify-content-between">
+                        <form>
                             <input type="hidden" name="task_id" value="<?php echo $row['id'] ?>" />
                             <select class="form-select bg-secondary" name="task_stauts">
                                 <option value="<?php echo TasksStatus::PENDING ?>" <?php echo $row['status'] == TasksStatus::PENDING ? 'selected' : '' ?>>Oczekujące</option>
@@ -23,6 +24,9 @@
                                 <option value="<?php echo TasksStatus::ENDING ?>" <?php echo $row['status'] == TasksStatus::ENDING ? 'selected' : '' ?>>Zakończone</option>
                             </select>
                         </form>
+                        <div class="align-items-center mb-2">
+                            <span class="text-dark">Autor: <?php echo $row['name_surname']; ?></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -38,17 +42,15 @@
             var status = $(this).val();
 
             $.ajax({
-                url: '',
+                url: 'tasks/edit',
                 method: 'POST',
                 data: {
-                    task_id: taskId,
+                    id: taskId,
                     status: status
                 },
                 success: function(response) {
                     alert('Status zadania został zmieniony.');
-                },
-                error: function() {
-                    alert('Wystąpił błąd podczas zmiany statusu zadania');
+                    window.location.reload();
                 }
             });
         });
@@ -57,20 +59,17 @@
 
 <!-- usuwanie zadania -->
 <script>
-    function deleteCard(cardId) {
+    function deleteTask(cardId) {
         if (confirm('Czy na pewno chcesz usunąć to zadanie?')) {
             $.ajax({
-                url: '',
+                url: 'tasks/delete',
                 method: 'POST',
                 data: {
-                    card_id: cardId
+                    id: cardId
                 },
                 success: function(response) {
                     alert('Zadanie zostało usunięte.');
                     location.reload();
-                },
-                error: function() {
-                    alert('Wystąpił błąd podczas usuwania zadania.');
                 }
             });
         }

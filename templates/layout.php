@@ -15,6 +15,8 @@ use App\Constants\Permissions; ?>
   <title>NoApp</title>
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <link href="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.css" rel="stylesheet" />
+  <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.js"></script>
 </head>
 
 <body>
@@ -24,10 +26,10 @@ use App\Constants\Permissions; ?>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="offcanvasExample">
         <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
       </button>
-      <div class="mt-3 ms-5 mb-2">
-        <a class="navbar-brand p-2" href="#">
-          <img src="pic/trello.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top" />
-          <span class="text-uppercase">NoApp</span>
+      <div class="mt-3 ms-4 mb-2">
+        <a class="navbar-brand p-2" href="dashboard">
+          <img src="pic/razem.svg" alt="Logo" width="150" height="50" class="d-inline-block align-text-top" />
+          <!-- <span class="mt-3 text-uppercase">NoApp</span> -->
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavBar" aria-controls="topNavBar" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -195,14 +197,14 @@ use App\Constants\Permissions; ?>
         </nav>
       </div>
       <hr class="dropdown-divider bg-light mb-2" />
-      <footer class="align-text-center text-white text-muted text-uppercase ms-4 mb-2 ps-2">
+      <footer class="align-text-center text-white text-muted text-uppercase ms-4 mb-1 ps-2">
         <h5>NOCAR.EU WebApp</h5>
       </footer>
     </div>
     <!--/sidebar-->
 
     <!-- content -->
-    <main class="mt-5 pt-4 ps-1">
+    <main class="mt-5 pt-4 ps-1 bgr">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12 mt-3">

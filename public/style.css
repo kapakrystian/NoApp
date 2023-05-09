@@ -7,8 +7,15 @@ button {
   --offcanvas-width: 270px;
   --topNavbarHeight: 56px;
 }
+.home {
+  padding-left: 16vw;
+  padding-top: 6vw;
+}
 .sidebar-nav {
   width: var(--offcanvas-width);
+  /* top: var(--topNavbarHeight); */
+  top: 88px;
+  bottom: 0;
 }
 .sidebar-link {
   display: flex;
@@ -42,7 +49,9 @@ button {
     -webkit-transform: none;
     transform: none;
     visibility: visible !important;
-    height: calc(100% - var(--topNavbarHeight));
-    top: var(--topNavbarHeight);
+    height: calc(100% - var(88px));
+    /* top: var(--topNavbarHeight); */
+    top: 88px;
+    bottom: 0;
   }
 }

@@ -29,4 +29,24 @@ class TasksModel extends Model implements TasksModelInterface
         $result = $this->conn->query($sql);
         return $result->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function changeTaskStatus($status, $id)
+    {
+        $sql = "
+            UPDATE tasks SET status = $status WHERE id = $id
+        ";
+
+        $result = $this->conn->query($sql);
+        return $result;
+    }
+
+    public function deleteTask($id)
+    {
+        $sql = "
+            DELETE FROM tasks WHERE id = $id
+        ";
+
+        $result = $this->conn->query($sql);
+        return $result;
+    }
 }

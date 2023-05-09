@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-10 col-lg-8 m-auto">
                     <h5 class="mt-5 md-3 text-uppercase">Logowanie do systemu NoApp</h5>
-                    <div class="mt-4 card">
+                    <div class="mt-4 card user-inf">
                         <div class="card-body">
                             <form action="login" method="POST" id="login">
                                 <label for="username" class="form-label">Nazwa użytkownika</label>

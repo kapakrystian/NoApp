@@ -5,7 +5,7 @@
                 <img alt="" style="width:500px;" title="" class="img-circle img-thumbnail" src="pic/default_user.png">
             </div>
             <div class="col-sm-12 col-md-10 col-lg-8">
-                <h5 class="text-uppercase">Informacje o użytkowniku</h5><br>
+                <h5 class="text-uppercase mt-4 ms-2">Informacje o użytkowniku</h5><br>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <tbody>
