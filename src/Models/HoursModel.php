@@ -10,7 +10,14 @@ class HoursModel extends Model implements HoursModelInterface
     //funckja dodająca godziny
     public function addHour($day, $start_time, $end_time, $employee)
     {
-        $sql = "INSERT INTO hours (day, start_time, end_time, employee) VALUES ('{$day}', '{$start_time}', '{$end_time}', '{$employee}')";
+
+        $start = $start_time;
+        $end = $end_time;
+
+        $diff = strtotime($end) - strtotime($start);
+        $time_diff = date('H:i', $diff);
+
+        $sql = "INSERT INTO hours (day, start_time, end_time, employee, hours_diff) VALUES ('{$day}', '{$start_time}', '{$end_time}', '{$employee}', '{$time_diff}')";
         $result = $this->conn->query($sql);
         return $result;
     }
@@ -108,6 +115,24 @@ class HoursModel extends Model implements HoursModelInterface
         $sql = "
             DELETE FROM users WHERE id = $id;
         ";
+        $result = $this->conn->query($sql);
+        return $result;
+    }
+
+    //funkcja sumująca godziny z danego miesiąca
+    public function sumTimeDiffByMonth()
+    {
+        $sql = "
+        SELECT
+        YEAR(start_time) AS year,
+        MONTH(start_time) AS month,
+        SUM(TIME_TO_SEC(TIMEDIFF(end_time, start_time))) AS total_seconds
+        FROM
+        hours
+        GROUP BY
+        YEAR(start_time), MONTH(start_time)
+        ";
+
         $result = $this->conn->query($sql);
         return $result;
     }

@@ -17,6 +17,7 @@ use App\Constants\Permissions; ?>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <link href="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.css" rel="stylesheet" />
   <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.js"></script>
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
 </head>
 
 <body>
@@ -197,7 +198,7 @@ use App\Constants\Permissions; ?>
               </div>
             </li>
             <li>
-              <a href="leavetime" class="nav-link px-3">
+              <a href="leavetimeAdding" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-calendar"></i></span>
                 <span>Dodaj wydarzenie</span>
               </a>
