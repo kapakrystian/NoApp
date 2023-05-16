@@ -11,4 +11,31 @@ class PermissionsAddingController extends Controller
         }
         $this->view->render('permissionsAdding', $users);
     }
+
+    public function addPermissionsAction()
+    {
+        if (empty($_POST)) {
+            echo 'error';
+            exit();
+        }
+        $this->hoursModel->addPermissions($_POST['id']);
+    }
+
+    public function deletePermissionsAction()
+    {
+        if (empty($_POST)) {
+            echo 'error';
+            exit();
+        }
+        $this->hoursModel->deletePermissions($_POST['id']);
+    }
+
+    public function deleteUsersAction()
+    {
+        if (empty($_POST)) {
+            echo 'error';
+            exit();
+        }
+        $this->hoursModel->deleteUsers($_POST['id']);
+    }
 }

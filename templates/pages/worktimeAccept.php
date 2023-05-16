@@ -1,5 +1,5 @@
 <section>
-    <div class="container-fluid">
+    <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-10 col-lg-8 m-auto">
                 <h4 class="my-4 text-uppercase"><span>GODZINY PRACY DO POTWIERDZENIA</span></h4>
@@ -24,8 +24,8 @@
                                     <td><?php echo $row['end_time']; ?></td>
                                     <td><?php echo $row['status_ho']; ?></td>
                                     <td>
-                                        <button class="btn btn-secondary btn-sm" type="button" id="acceptHoursBtn">
-                                            <a class="text-decoration-none text-white" href="#">Potwierdź</a>
+                                        <button class="btn btn-secondary btn-sm" type="button" id="acceptHours" onclick="acceptHours(<?php echo $row['id'] ?>)">
+                                            Akceptuj
                                         </button>
                                     </td>
                                 </tr>
@@ -37,3 +37,60 @@
             </div>
         </div>
 </section>
+
+<!-- potwierdzenie godzin pracy -->
+<script>
+    function acceptHours(hoursId) {
+        if (confirm('Czy potwierdasz godzinę?')) {
+            $.ajax({
+                url: 'worktimeAccept/acceptHours',
+                method: 'POST',
+                data: {
+                    id: hoursId
+                },
+                success: function(response) {
+                    alert('Potwierdzono godzinę');
+                    location.reload();
+                }
+            });
+        }
+    }
+</script>
+
+<!-- sktypt biblioteki DataTable -->
+<script>
+    $("table").DataTable({
+        dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'f>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+        columnDefs: [{
+            orderable: false,
+            searchable: false,
+            targets: [5, 4]
+        }],
+        language: {
+            "decimal": "",
+            "emptyTable": "Brak danych",
+            "info": "Wyświetlanie od _START_ do _END_ z _TOTAL_ rekordów",
+            "infoEmpty": "Wyświetlanie od 0 do 0 z 0 rekordów",
+            "infoFiltered": "(filtrowanie spośród _MAX_ wszystkich rekordów)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Wyświetl _MENU_ rekordów",
+            "loadingRecords": "Ładowanie...",
+            "processing": "Przetwarzanie...",
+            "search": "Szukaj:",
+            "zeroRecords": "Nie znaleziono pasujących rekordów",
+            "paginate": {
+                "first": "Pierwsza",
+                "last": "Ostatnia",
+                "next": "Następna",
+                "previous": "Poprzednia"
+            },
+            "aria": {
+                "sortAscending": ": aktywuj, by posortować kolumnę rosnąco",
+                "sortDescending": ": aktywuj, by posortować kolumnę malejąco"
+            }
+        }
+    });
+</script>

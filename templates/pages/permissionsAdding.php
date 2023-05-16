@@ -1,5 +1,5 @@
 <section>
-    <div class="container-fluid">
+    <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-10 col-lg-8 m-auto">
                 <h4 class="my-4 text-uppercase"><span>LISTA UŻYTKOWNIKÓW</span></h4>
@@ -11,7 +11,7 @@
                                 <th>Nazwa użytkownika</th>
                                 <th>Email</th>
                                 <th>Numer telefonu</th>
-                                <th></th>
+                                <th>Rodzaj konta</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -22,16 +22,20 @@
                                     <td><?php echo $row['username'] ?></td>
                                     <td><?php echo $row['email'] ?></td>
                                     <td><?php echo $row['phone'] ?></td>
+                                    <td><?php echo $row['permissions'] ?></td>
 
                                     <td>
-                                        <button class="btn btn-secondary btn-sm" type="button" id="changePermissionsBtn">
-                                            <a class="text-decoration-none text-white" href="#">Nadaj uprawnienia</a>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-secondary btn-sm" type="button" id="deleteUserBtn">
-                                            <a class="text-decoration-none text-white" href="#">Usuń</a>
-                                        </button>
+                                        <!-- Default dropright button -->
+                                        <div class="btn-group dropdown dropright">
+                                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Akcje
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#" id="changePermissionsBtn" onclick="addPermissions(<?php echo $row['id'] ?>)">Nadaj uprawnienia</a>
+                                                <a class="dropdown-item" href="#" id="deleteUserPermissionsBtn" onclick="deletePermissions(<?php echo $row['id'] ?>)">Usuń uprawnienia</a>
+                                                <a class="dropdown-item" href="#" id="deleteUserBtn" onclick="deleteUsers(<?php echo $row['id'] ?>)">Usuń użytkownika</a>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -43,6 +47,67 @@
         </div>
 </section>
 
+<!--skrypt nadający uprawnienia administratorskie-->
+<script>
+    function addPermissions(userId) {
+        if (confirm('Czy na pewno chcesz nadać temu użytkownikowi uprawnienia administratorskie?')) {
+            $.ajax({
+                url: 'permissionsAdding/addPermissions',
+                method: 'POST',
+                data: {
+                    id: userId
+                },
+                success: function(response) {
+                    alert('Uprawnienia zostały dodane.');
+                    location.reload();
+                }
+            });
+        }
+    }
+</script>
+
+<!-- skrypt usuwający uprawnienia administratorskie -->
+<script>
+    function deletePermissions(userId) {
+        if (confirm('Czy na pewno chcesz usunać uprawnienia administratorskie temu użytkownikowi?')) {
+            $.ajax({
+                url: 'permissionsAdding/deletePermissions',
+                method: 'POST',
+                data: {
+                    id: userId
+                },
+                success: function(response) {
+                    alert('Uprawnienia zostały usunięte.');
+                    location.reload();
+                }
+            });
+        }
+    }
+</script>
+
+<!--skrypt usuwający użytkownika-->
+<script>
+    function deleteUsers(userId) {
+        if (confirm('Czy na pewno chcesz usunąć tego użytkownika?')) {
+            $.ajax({
+                url: 'permissionsAdding/deleteUsers',
+                method: 'POST',
+                data: {
+                    id: userId
+                },
+                success: function(response) {
+                    alert('Użytkownik został usunięty.');
+                    location.reload();
+                },
+                error: function(response) {
+                    alert('Przed usunięciem użytkownika musisz usunąć wszystkie powiązane z nim zawartości!');
+                }
+            });
+        }
+    }
+</script>
+
+<!--skypt biblioteki DataTables-->
 <script>
     $("table").DataTable({
         dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'f>>" +
@@ -51,7 +116,7 @@
         columnDefs: [{
             orderable: false,
             searchable: false,
-            targets: [5, 4]
+            targets: [4]
         }],
         language: {
             "decimal": "",

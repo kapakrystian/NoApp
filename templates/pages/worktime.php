@@ -1,5 +1,5 @@
 <section>
-    <div class="container-fluid">
+    <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-10 col-lg-8 m-auto">
                 <h4 class="my-4 text-uppercase"><span><?php echo $_SESSION['name_surname'] ?> - godziny pracy</span></h4>
@@ -22,9 +22,7 @@
                                     <td><?php echo $row['end_time']; ?></td>
                                     <td><?php echo $row['status_ho']; ?></td>
                                     <td>
-                                        <button class="btn btn-secondary btn-sm" type="button" id="deleteHoursBtn">
-                                            <a class="text-decoration-none text-white" href="#">Usuń</a>
-                                        </button>
+                                        <button class="btn btn-secondary btn-sm" type="button" id="deleteHours" onclick="deleteHours(<?php echo $row['id']; ?>)">Usuń</button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -35,3 +33,22 @@
             </div>
         </div>
 </section>
+
+<!-- usuwanie godzin -->
+<script>
+    function deleteHours(hoursId) {
+        if (confirm('Czy na pewno chcesz usunąć godzinę?')) {
+            $.ajax({
+                url: 'worktime/delete',
+                method: 'POST',
+                data: {
+                    id: hoursId
+                },
+                success: function(response) {
+                    alert('Godzina została usunięta.');
+                    location.reload();
+                }
+            });
+        }
+    }
+</script>

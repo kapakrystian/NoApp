@@ -11,6 +11,10 @@ button {
   padding-left: 16vw;
   padding-top: 6vw;
 }
+.home-title {
+  padding-left: 16vw;
+  padding-top: 3vw;
+}
 .sidebar-nav {
   width: var(--offcanvas-width);
   /* top: var(--topNavbarHeight); */

@@ -74,26 +74,4 @@
             });
         }
     }
-
-    // $(function() {
-    //     $('.form-select').on('change', function() {
-    //         var taskId = $(this).siblings('[name="task_id"]').val();
-    //         var status = $(this).val();
-
-    //         $.ajax({
-    //             url: '',
-    //             method: 'POST',
-    //             data: {
-    //                 task_id: taskId,
-    //                 status: status
-    //             },
-    //             success: function(response) {
-    //                 alert('Status zadania został zmieniony.');
-    //             },
-    //             error: function() {
-    //                 alert('Wystąpił błąd podczas zmiany statusu zadania');
-    //             }
-    //         });
-    //     });
-    // });
 </script>

@@ -11,4 +11,13 @@ class WorktimeController extends Controller
         }
         $this->view->render('worktime', $hours);
     }
+
+    public function deleteAction()
+    {
+        if (empty($_POST)) {
+            echo 'error';
+            exit();
+        }
+        $this->hoursModel->deleteHours($_POST['id']);
+    }
 }

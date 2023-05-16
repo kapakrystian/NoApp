@@ -11,4 +11,13 @@ class WorktimeAcceptController extends Controller
         }
         $this->view->render('worktimeAccept', $hours);
     }
+
+    public function acceptHoursAction()
+    {
+        if (empty($_POST)) {
+            echo 'error';
+            exit();
+        }
+        $this->hoursModel->acceptHours($_POST['id']);
+    }
 }

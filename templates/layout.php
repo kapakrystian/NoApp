@@ -146,35 +146,47 @@ use App\Constants\Permissions; ?>
                 Moduł godzinowy
               </div>
             </li>
-            <?php if ($_SESSION['permissions'] === Permissions::USER) { ?>
-              <li>
-                <a href="worktimeAdding" class="nav-link px-3">
-                  <span class="me-2"><i class="bi bi-alarm"></i></span>
-                  <span>Dodaj godziny</span>
-                </a>
-              </li>
-              <li>
-                <a href="worktime" class="nav-link px-3">
-                  <span class="me-2"><i class="bi bi-alarm"></i></span>
-                  <span>Moje godziny</span>
-                </a>
-              </li>
-            <?php } ?>
-            <?php if ($_SESSION['permissions'] === Permissions::ADMIN) { ?>
-              <li>
-                <a href="worktimeAccept" class="nav-link px-3">
-                  <span class="me-2"><i class="bi bi-alarm"></i></span>
-                  <span>Potwierdź godziny</span>
-                </a>
-              </li>
-              <li>
-                <a href="permissionsAdding" class="nav-link px-3">
-                  <span class="me-2"><i class="bi bi-alarm"></i></span>
-                  <span>Użytkownicy</span>
-                </a>
-              </li>
-            <?php } ?>
-
+            <?php
+            switch ($_SESSION['permissions']) {
+              case Permissions::USER:
+            ?>
+                <li>
+                  <a href="worktimeAdding" class="nav-link px-3">
+                    <span class="me-2"><i class="bi bi-alarm"></i></span>
+                    <span>Dodaj godziny</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="worktime" class="nav-link px-3">
+                    <span class="me-2"><i class="bi bi-alarm"></i></span>
+                    <span>Moje godziny</span>
+                  </a>
+                </li>
+              <?php
+                break;
+              case Permissions::ADMIN:
+              case Permissions::SUPERADMIN:
+              ?>
+                <li>
+                  <a href="worktimeAccept" class="nav-link px-3">
+                    <span class="me-2"><i class="bi bi-alarm"></i></span>
+                    <span>Potwierdź godziny</span>
+                  </a>
+                </li>
+                <?php
+                if ($_SESSION['permissions'] === Permissions::SUPERADMIN) {
+                ?>
+                  <li>
+                    <a href="permissionsAdding" class="nav-link px-3">
+                      <span class="me-2"><i class="bi bi-alarm"></i></span>
+                      <span>Użytkownicy</span>
+                    </a>
+                  </li>
+            <?php
+                }
+                break;
+            }
+            ?>
 
             <li class="my-2">
               <hr class="dropdown-divider bg-light" />
@@ -183,6 +195,12 @@ use App\Constants\Permissions; ?>
               <div class="text-muted fw-bold text-uppercase px-3 mb-1">
                 Moduł urlopowy
               </div>
+            </li>
+            <li>
+              <a href="leavetime" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-calendar"></i></span>
+                <span>Dodaj wydarzenie</span>
+              </a>
             </li>
             <li>
               <a href="leavetime" class="nav-link px-3">

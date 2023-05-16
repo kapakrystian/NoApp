@@ -6,4 +6,5 @@ class Permissions
 {
     public const ADMIN = "ADMIN";
     public const USER = "USER";
+    public const SUPERADMIN = "SUPERADMIN";
 }
