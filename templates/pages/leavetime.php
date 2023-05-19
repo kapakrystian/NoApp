@@ -10,6 +10,7 @@
         let calendarElement = $("#calendar")[0]
         let calendar = new FullCalendar.Calendar(calendarElement, {
             initialView: "dayGridMonth",
+            themeSystem: 'bootstrap5',
             displayEventTime: false,
             height: calendarHeight,
             locale: "pl",
@@ -26,8 +27,8 @@
                 failure: function() {
                     alert('there was an error while fetching events!');
                 },
-                color: 'red',
-                textColor: 'black'
+                color: 'gray',
+                textColor: 'black',
             }, {
                 url: 'leavetime/getEvents',
                 method: 'POST',

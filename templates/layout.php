@@ -163,6 +163,12 @@ use App\Constants\Permissions; ?>
                     <span>Moje godziny</span>
                   </a>
                 </li>
+                <li>
+                  <a href="worktimeMonthSum" class="nav-link px-3">
+                    <span class="me-2"><i class="bi bi-alarm"></i></span>
+                    <span>Suma godzin</span>
+                  </a>
+                </li>
               <?php
                 break;
               case Permissions::ADMIN:
@@ -181,6 +187,12 @@ use App\Constants\Permissions; ?>
                     <a href="permissionsAdding" class="nav-link px-3">
                       <span class="me-2"><i class="bi bi-alarm"></i></span>
                       <span>Użytkownicy</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="worktimeMonthSum" class="nav-link px-3">
+                      <span class="me-2"><i class="bi bi-alarm"></i></span>
+                      <span>Suma godzin</span>
                     </a>
                   </li>
             <?php

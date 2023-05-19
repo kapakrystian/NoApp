@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Model;
 use App\Models\HoursModelInterface;
+use DateInterval;
 
 class HoursModel extends Model implements HoursModelInterface
 {
@@ -11,12 +12,20 @@ class HoursModel extends Model implements HoursModelInterface
     public function addHour($day, $start_time, $end_time, $employee)
     {
 
-        $start = $start_time;
-        $end = $end_time;
+        //obiekty klasy DateTime zapisujące dane o godzinach
+        $start = new \DateTime($start_time);
+        $end = new \DateTime($end_time);
 
-        $diff = strtotime($end) - strtotime($start);
-        $time_diff = date('H:i', $diff);
+        //warunek sprawdzający czy w trakcie pracy nie zmienia się dzień (zmiany nocne)
+        if ($end < $start) {
+            $end->add(new DateInterval('P1D'));
+        }
 
+        //wyliczenie różnicy godzin i zapisanie jej w formacie godzin i minut
+        $diff = $end->diff($start);
+        $time_diff = $diff->format('%H:%I');
+
+        //wykonanie zapytania
         $sql = "INSERT INTO hours (day, start_time, end_time, employee, hours_diff) VALUES ('{$day}', '{$start_time}', '{$end_time}', '{$employee}', '{$time_diff}')";
         $result = $this->conn->query($sql);
         return $result;
@@ -120,20 +129,29 @@ class HoursModel extends Model implements HoursModelInterface
     }
 
     //funkcja sumująca godziny z danego miesiąca
-    public function sumTimeDiffByMonth()
+    public function sumHoursByMonth($user_id)
     {
+
         $sql = "
         SELECT
-        YEAR(start_time) AS year,
-        MONTH(start_time) AS month,
-        SUM(TIME_TO_SEC(TIMEDIFF(end_time, start_time))) AS total_seconds
+        YEAR(day) AS year,
+        MONTHNAME(day) AS month,
+        TIME_FORMAT(SEC_TO_TIME(SUM(TIME_TO_SEC(
+          CASE
+            WHEN end_time >= start_time THEN TIMEDIFF(end_time, start_time)
+            ELSE TIMEDIFF('24:00:00', start_time) + TIMEDIFF(end_time, '00:00:00')
+          END
+        ))), '%H:%i') AS total_hours
         FROM
         hours
+        WHERE employee = $user_id
         GROUP BY
-        YEAR(start_time), MONTH(start_time)
+        YEAR(day),
+        MONTH(day)
         ";
 
         $result = $this->conn->query($sql);
-        return $result;
+        $rows = $result->fetchAll(\PDO::FETCH_ASSOC);
+        return $rows;
     }
 }
