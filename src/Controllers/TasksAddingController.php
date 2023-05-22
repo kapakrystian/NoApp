@@ -24,7 +24,6 @@ class TasksAddingController extends Controller
                     $error_message = 'Dodanie zadania nie powiodło się. Spróbuj ponownie';
                 }
             }
-            return $error_message;
         }
         $this->view->render('tasksAdding');
     }

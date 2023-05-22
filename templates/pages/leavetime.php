@@ -10,7 +10,7 @@
         let calendarElement = $("#calendar")[0]
         let calendar = new FullCalendar.Calendar(calendarElement, {
             initialView: "dayGridMonth",
-            themeSystem: 'bootstrap5',
+            themeSystem: "bootstrap5",
             displayEventTime: false,
             height: calendarHeight,
             locale: "pl",

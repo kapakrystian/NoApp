@@ -99,7 +99,7 @@
                     alert('Użytkownik został usunięty.');
                     location.reload();
                 },
-                error: function(response) {
+                failure: function(response) {
                     alert('Przed usunięciem użytkownika musisz usunąć wszystkie powiązane z nim zawartości!');
                 }
             });

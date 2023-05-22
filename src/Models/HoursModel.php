@@ -154,4 +154,31 @@ class HoursModel extends Model implements HoursModelInterface
         $rows = $result->fetchAll(\PDO::FETCH_ASSOC);
         return $rows;
     }
+
+    public function getUsersMonthSumHours()
+    {
+        $sql = "
+        SELECT
+        YEAR(day) AS year,
+        MONTHNAME(day) AS month,
+        TIME_FORMAT(SEC_TO_TIME(SUM(TIME_TO_SEC(
+        CASE
+        WHEN end_time >= start_time THEN TIMEDIFF(end_time, start_time)
+        ELSE TIMEDIFF('24:00:00', start_time) + TIMEDIFF(end_time, '00:00:00')
+        END
+        ))), '%H:%i') AS total_hours,
+        users.name_surname
+        FROM
+        hours
+        INNER JOIN users ON hours.employee = users.id
+        GROUP BY
+        YEAR(day),
+        MONTH(day),
+        users.name_surname
+        ";
+
+        $result = $this->conn->query($sql);
+        $rows = $result->fetchAll(\PDO::FETCH_ASSOC);
+        return $rows;
+    }
 }

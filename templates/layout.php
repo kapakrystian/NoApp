@@ -184,15 +184,21 @@ use App\Constants\Permissions; ?>
                 if ($_SESSION['permissions'] === Permissions::SUPERADMIN) {
                 ?>
                   <li>
+                    <a href="leavetimeAccept" class="nav-link px-3">
+                      <span class="me-2"><i class="bi bi-alarm"></i></span>
+                      <span>Potwierdź urlopy</span>
+                    </a>
+                  </li>
+                  <li>
                     <a href="permissionsAdding" class="nav-link px-3">
                       <span class="me-2"><i class="bi bi-alarm"></i></span>
                       <span>Użytkownicy</span>
                     </a>
                   </li>
                   <li>
-                    <a href="worktimeMonthSum" class="nav-link px-3">
+                    <a href="worktimeUsersMonthSum" class="nav-link px-3">
                       <span class="me-2"><i class="bi bi-alarm"></i></span>
-                      <span>Suma godzin</span>
+                      <span>Suma godzin pracowników</span>
                     </a>
                   </li>
             <?php

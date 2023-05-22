@@ -7,6 +7,7 @@ use App\Models\LeavetimeModelInterface;
 
 class LeavetimeModel extends Model implements LeavetimeModelInterface
 {
+    // funkcja dodająca wydarzenia
     public function addEvent($title, $start_date, $end_date, $user_id)
     {
         $sql = "INSERT INTO events (title, start_date, end_date, user_id) VALUES ('{$title}', '{$start_date}', '{$end_date}', '{$user_id}')";
@@ -14,6 +15,7 @@ class LeavetimeModel extends Model implements LeavetimeModelInterface
         return $result;
     }
 
+    //funkcja pobierająca wydarzenia do kalendarza
     public function getEvents($start_date, $end_date, $status)
     {
         $sql = "
@@ -21,6 +23,30 @@ class LeavetimeModel extends Model implements LeavetimeModelInterface
             LEFT JOIN users us ON ev.user_id = us.id
             WHERE start_date BETWEEN '$start_date' AND '$end_date' AND end_date BETWEEN '$start_date' AND '$end_date' AND status = '$status'
         ";
+        $result = $this->conn->query($sql);
+        return $result;
+    }
+
+    //funkcja pobierająca urlopy do potwierdzenia
+    public function getLeavetimeAdmin(): array
+    {
+        $sql = "
+                SELECT ev.*, us.name_surname
+                FROM events ev
+                INNER JOIN users us ON ev.user_id = us.id
+                WHERE ev.status = 'NIEPOTWIERDZONE'
+            ";
+
+        $result = $this->conn->query($sql);
+        return $result->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    //funkcja potwierdzająca godzinę
+    public function acceptLeavetime($id)
+    {
+        $sql = "
+                UPDATE events ev SET ev.status = 'POTWIERDZONE' WHERE ev.id = $id
+            ";
         $result = $this->conn->query($sql);
         return $result;
     }
