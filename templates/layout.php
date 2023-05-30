@@ -222,6 +222,12 @@ use App\Constants\Permissions; ?>
               </a>
             </li>
             <li>
+              <a href="leavetimeEvents" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-calendar"></i></span>
+                <span>Moje wydarzenia</span>
+              </a>
+            </li>
+            <li>
               <a href="leavetime" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-calendar"></i></span>
                 <span>Kalendarz</span>

@@ -71,6 +71,9 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="d-grid">
+                        <a href="myProfile/edit"><button class="btn btn-secondary btn-sm" type="button" id="editProfile">Edytuj profil </button></a>
+                    </div>
                 </div>
             </div>
         </div>

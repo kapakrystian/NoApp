@@ -1,5 +1,5 @@
 <div class="container">
-    <img src="pic/razem.svg" class="img-fluid responsive-image mt-5" alt="">
+    <img src="pic/razem.svg" class="img-fluid mt-5" alt="">
 </div>
 <div class="container-fluid text-center mt-5 fw-bolder">
     <h3 class="text-uppercase text-primary"><?php echo $_SESSION['name_surname']; ?>, witamy w aplikacji NoApp!</h3>

@@ -11,4 +11,10 @@ class MyProfileController extends Controller
         }
         $this->view->render('myProfile', $profile);
     }
+
+    public function editAction()
+    {
+        $this->view->render('editProfile');
+        echo 'chuj';
+    }
 }

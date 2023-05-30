@@ -50,4 +50,28 @@ class LeavetimeModel extends Model implements LeavetimeModelInterface
         $result = $this->conn->query($sql);
         return $result;
     }
+
+    //funkcja pobierająca wydarzenia do listy
+    public function getEventsList($user = '')
+    {
+        $user = $_SESSION['user_id'];
+
+        $sql = "
+            SELECT ev.*, us.name_surname FROM events ev
+            INNER JOIN users us ON ev.user_id = us.id
+            WHERE ev.user_id = $user
+        ";
+        $result = $this->conn->query($sql);
+        return $result->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    //funkcja usuwająca dodane wydarzenie
+    public function deleteEvents($id)
+    {
+        $sql = "
+                DELETE FROM events WHERE id = $id
+            ";
+        $result = $this->conn->query($sql);
+        return $result;
+    }
 }

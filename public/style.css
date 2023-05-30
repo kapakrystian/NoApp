@@ -7,10 +7,6 @@ button {
   --offcanvas-width: 270px;
   --topNavbarHeight: 56px;
 }
-.responsive-image {
-  max-width: 50%;
-  height: auto;
-}
 .home-title {
   padding-left: 16vw;
   padding-top: 3vw;

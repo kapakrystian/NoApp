@@ -144,7 +144,7 @@ class HoursModel extends Model implements HoursModelInterface
         ))), '%H:%i') AS total_hours
         FROM
         hours
-        WHERE employee = $user_id
+        WHERE employee = $user_id AND status_ho = 'POTWIERDZONE'
         GROUP BY
         YEAR(day),
         MONTH(day)
@@ -155,6 +155,7 @@ class HoursModel extends Model implements HoursModelInterface
         return $rows;
     }
 
+    //funkcja sumująca godziny przepracowane w danych miesiącach przez konkretnych użytkowników
     public function getUsersMonthSumHours()
     {
         $sql = "
@@ -171,6 +172,7 @@ class HoursModel extends Model implements HoursModelInterface
         FROM
         hours
         INNER JOIN users ON hours.employee = users.id
+        WHERE status_ho = 'POTWIERDZONE'
         GROUP BY
         YEAR(day),
         MONTH(day),
@@ -181,4 +183,6 @@ class HoursModel extends Model implements HoursModelInterface
         $rows = $result->fetchAll(\PDO::FETCH_ASSOC);
         return $rows;
     }
+
+    // public function rejected
 }
