@@ -9,13 +9,13 @@ use App\Constants\Permissions; ?>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="public/style.css" />
+  <link rel="stylesheet" href="/public/style.css" />
   <title>NoApp</title>
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <link href="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.css" rel="stylesheet" />
+  <link href=" https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.css" rel="stylesheet" />
   <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.js"></script>
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
 </head>
@@ -28,8 +28,8 @@ use App\Constants\Permissions; ?>
         <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
       </button>
       <div class="mt-3 ms-4 mb-2">
-        <a class="navbar-brand p-2" href="dashboard">
-          <img src="pic/razem.svg" alt="Logo" width="150" height="50" class="d-inline-block align-text-top" />
+        <a class="navbar-brand p-2" href="/dashboard">
+          <img src="/pic/razem.svg" alt="Logo" width="150" height="50" class="d-inline-block align-text-top" />
           <!-- <span class="mt-3 text-uppercase">NoApp</span> -->
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavBar" aria-controls="topNavBar" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,9 +44,9 @@ use App\Constants\Permissions; ?>
             <div class="btn-toolbar" role="toolbar">
               <div>
                 <button class="btn btn-outline-secondary text-white me-1" type="button" role="button">
-                  <a class="text-decoration-none text-white text-muted" href="login">Logowanie</a></button>
+                  <a class="text-decoration-none text-white text-muted" href="/login">Logowanie</a></button>
                 <button class="btn btn-outline-secondary text-white me-4" type="button" role="button">
-                  <a class="text-decoration-none text-white text-muted" href="register">Rejestracja</a></button>
+                  <a class="text-decoration-none text-white text-muted" href="/register">Rejestracja</a></button>
               </div>
             </div>
           <?php } ?>
@@ -61,7 +61,7 @@ use App\Constants\Permissions; ?>
                   <i class="bi bi-person-circle"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a class="dropdown-item" href="myProfile">Mój profil</a></li>
+                  <li><a class="dropdown-item" href="/myProfile">Mój profil</a></li>
                   <li><a class="dropdown-item" href="/logout">Wyloguj</a></li>
                 </ul>
               </li>
@@ -80,7 +80,7 @@ use App\Constants\Permissions; ?>
           <ul class="navbar-nav">
             <!-- <li><hr class="dropdown-divider bg-light p-2" /></li> -->
             <li>
-              <a href="/?action=home" class="nav-link px-3 active mt-4">
+              <a href="/dashboard" class="nav-link px-3 active mt-4">
                 <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                 <span>Home</span>
               </a>
@@ -94,13 +94,13 @@ use App\Constants\Permissions; ?>
               </div>
             </li>
             <li>
-              <a href="tasks" class="nav-link px-3">
+              <a href="/tasks" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-book-fill"></i></span>
                 <span>Wszystkie zadania</span>
               </a>
             </li>
             <li>
-              <a href="tasksAdding" class="nav-link px-3">
+              <a href="/tasksAdding" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-book-fill"></i></span>
                 <span>Dodaj zadanie</span>
               </a>
@@ -118,19 +118,19 @@ use App\Constants\Permissions; ?>
               <div class="collapse" id="tasks">
                 <ul class="navbar-nav ps-3">
                   <li>
-                    <a href="tasksPending" class="nav-link px-3">
+                    <a href="/tasksPending" class="nav-link px-3">
                       <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                       <span>Zadania oczekujące</span>
                     </a>
                   </li>
                   <li>
-                    <a href="tasksInProgress" class="nav-link px-3">
+                    <a href="/tasksInProgress" class="nav-link px-3">
                       <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                       <span>Zadania wykonywane</span>
                     </a>
                   </li>
                   <li>
-                    <a href="tasksEnding" class="nav-link px-3">
+                    <a href="/tasksEnding" class="nav-link px-3">
                       <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                       <span>Zadania zakończone</span>
                     </a>
@@ -152,19 +152,19 @@ use App\Constants\Permissions; ?>
               case Permissions::USER:
             ?>
                 <li>
-                  <a href="worktimeAdding" class="nav-link px-3">
+                  <a href="/worktimeAdding" class="nav-link px-3">
                     <span class="me-2"><i class="bi bi-alarm"></i></span>
                     <span>Dodaj godziny</span>
                   </a>
                 </li>
                 <li>
-                  <a href="worktime" class="nav-link px-3">
+                  <a href="/worktime" class="nav-link px-3">
                     <span class="me-2"><i class="bi bi-alarm"></i></span>
                     <span>Moje godziny</span>
                   </a>
                 </li>
                 <li>
-                  <a href="worktimeMonthSum" class="nav-link px-3">
+                  <a href="/worktimeMonthSum" class="nav-link px-3">
                     <span class="me-2"><i class="bi bi-alarm"></i></span>
                     <span>Suma godzin</span>
                   </a>
@@ -175,31 +175,24 @@ use App\Constants\Permissions; ?>
               case Permissions::SUPERADMIN:
               ?>
                 <li>
-                  <a href="worktimeAccept" class="nav-link px-3">
+                  <a href="/worktimeAccept" class="nav-link px-3">
                     <span class="me-2"><i class="bi bi-alarm"></i></span>
                     <span>Potwierdź godziny</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/worktimeUsersMonthSum" class="nav-link px-3">
+                    <span class="me-2"><i class="bi bi-alarm"></i></span>
+                    <span>Suma godzin pracowników</span>
                   </a>
                 </li>
                 <?php
                 if ($_SESSION['permissions'] === Permissions::SUPERADMIN) {
                 ?>
-                  <li>
-                    <a href="leavetimeAccept" class="nav-link px-3">
-                      <span class="me-2"><i class="bi bi-alarm"></i></span>
-                      <span>Potwierdź urlopy</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="permissionsAdding" class="nav-link px-3">
-                      <span class="me-2"><i class="bi bi-alarm"></i></span>
-                      <span>Użytkownicy</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="worktimeUsersMonthSum" class="nav-link px-3">
-                      <span class="me-2"><i class="bi bi-alarm"></i></span>
-                      <span>Suma godzin pracowników</span>
-                    </a>
+                  <a href="/permissionsAdding" class="nav-link px-3">
+                    <span class="me-2"><i class="bi bi-alarm"></i></span>
+                    <span>Użytkownicy</span>
+                  </a>
                   </li>
             <?php
                 }
@@ -216,23 +209,33 @@ use App\Constants\Permissions; ?>
               </div>
             </li>
             <li>
-              <a href="leavetimeAdding" class="nav-link px-3">
+              <a href="/leavetimeAdding" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-calendar"></i></span>
                 <span>Dodaj wydarzenie</span>
               </a>
             </li>
             <li>
-              <a href="leavetimeEvents" class="nav-link px-3">
+              <a href="/leavetimeEvents" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-calendar"></i></span>
                 <span>Moje wydarzenia</span>
               </a>
             </li>
             <li>
-              <a href="leavetime" class="nav-link px-3">
+              <a href="/leavetime" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-calendar"></i></span>
                 <span>Kalendarz</span>
               </a>
             </li>
+            <?php
+            if ($_SESSION['permissions'] === Permissions::SUPERADMIN) {
+            ?>
+              <li>
+                <a href="/leavetimeAccept" class="nav-link px-3">
+                  <span class="me-2"><i class="bi bi-calendar"></i></span>
+                  <span>Potwierdź wydarzenia</span>
+                </a>
+              </li>
+            <?php } ?>
             <li class="my-2">
               <hr class="dropdown-divider bg-light" />
             </li>
@@ -253,7 +256,6 @@ use App\Constants\Permissions; ?>
           <div class="col-md-12 mt-3">
             <div class="page">
               <?php require_once("templates/pages/{$page}.php"); ?>
-              <!-- <p>You are currently not sign in <a href="/?action=login">Login</a> Not yet a member? <a href="/?action=signup">Sign up</a></p> -->
             </div>
           </div>
         </div>
@@ -268,8 +270,8 @@ use App\Constants\Permissions; ?>
   <?php } ?>
 
 
-  <script src="./js/bootstrap.bundle.min.js"></script>
-  <script src="../js/app.js"></script>
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/app.js"></script>
 </body>
 
 </html>

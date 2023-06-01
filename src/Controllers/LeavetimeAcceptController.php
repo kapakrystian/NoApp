@@ -20,4 +20,13 @@ class LeavetimeAcceptController extends Controller
         }
         $this->leavetimeModel->acceptLeavetime($_POST['id']);
     }
+
+    public function rejectLeavetimeAction()
+    {
+        if (empty($_POST)) {
+            echo 'error';
+            exit();
+        }
+        $this->leavetimeModel->rejectLeavetime($_POST['id']);
+    }
 }

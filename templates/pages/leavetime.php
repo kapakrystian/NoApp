@@ -40,6 +40,17 @@
                 },
                 color: 'green',
                 textColor: 'black'
+            }, {
+                url: 'leavetime/getEvents',
+                method: 'POST',
+                extraParams: {
+                    status: "ODRZUCONE"
+                },
+                failure: function() {
+                    alert('there was an error while fetching events!');
+                },
+                color: 'red',
+                textColor: 'black'
             }],
         })
         calendar.render()

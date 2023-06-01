@@ -20,4 +20,13 @@ class WorktimeAcceptController extends Controller
         }
         $this->hoursModel->acceptHours($_POST['id']);
     }
+
+    public function rejectHoursAction()
+    {
+        if (empty($_POST)) {
+            echo 'error';
+            exit();
+        }
+        $this->hoursModel->rejectHours($_POST['id']);
+    }
 }

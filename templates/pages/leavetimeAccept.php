@@ -2,7 +2,7 @@
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-10 col-lg-8 m-auto">
-                <h4 class="my-4 text-uppercase"><span>URLOPY DO POTWIERDZENIA</span></h4>
+                <h4 class="my-4 text-uppercase"><span>WYDARZENIA DO POTWIERDZENIA</span></h4>
                 <div class="table-responsive">
                     <table class="table table-striped table-light">
                         <thead>
@@ -12,6 +12,7 @@
                                 <th>Dzień rozpoczęcia</th>
                                 <th>Dzień zakończenia</th>
                                 <th>Status</th>
+                                <th></th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -26,6 +27,11 @@
                                     <td>
                                         <button class="btn btn-secondary btn-sm" type="button" id="acceptLeavetime" onclick="acceptLeavetime(<?php echo $row['id'] ?>)">
                                             Akceptuj
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-secondary btn-sm" type="button" id="acceptLeavetime" onclick="rejectLeavetime(<?php echo $row['id'] ?>)">
+                                            Odrzuć
                                         </button>
                                     </td>
                                 </tr>
@@ -57,6 +63,25 @@
     }
 </script>
 
+<!-- odrzucenie dni urlopowych -->
+<script>
+    function rejectLeavetime(leavetimeId) {
+        if (confirm('Czy na pewno chcesz odrzucić dany urlop?')) {
+            $.ajax({
+                url: 'leavetimeAccept/rejectLeavetime',
+                method: 'POST',
+                data: {
+                    id: leavetimeId
+                },
+                success: function(response) {
+                    alert('Odrzucono urlop.');
+                    location.reload();
+                }
+            });
+        }
+    }
+</script>
+
 <!-- sktypt biblioteki DataTable -->
 <script>
     $("table").DataTable({
@@ -66,7 +91,7 @@
         columnDefs: [{
             orderable: false,
             searchable: false,
-            targets: [5]
+            targets: [5, 6]
         }],
         language: {
             "decimal": "",

@@ -13,6 +13,7 @@
                                 <th>Godzina zakończenia</th>
                                 <th>Status</th>
                                 <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,6 +27,11 @@
                                     <td>
                                         <button class="btn btn-secondary btn-sm" type="button" id="acceptHours" onclick="acceptHours(<?php echo $row['id'] ?>)">
                                             Akceptuj
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-secondary btn-sm" type="button" id="acceptHours" onclick="rejectHours(<?php echo $row['id'] ?>)">
+                                            Odrzuć
                                         </button>
                                     </td>
                                 </tr>
@@ -57,6 +63,25 @@
     }
 </script>
 
+<!-- odrzucenie godzin pracy -->
+<script>
+    function rejectHours(hoursId) {
+        if (confirm('Czy na pewno chcesz odrzucić wprowadzoną godzinę?')) {
+            $.ajax({
+                url: 'worktimeAccept/rejectHours',
+                method: 'POST',
+                data: {
+                    id: hoursId
+                },
+                success: function(response) {
+                    alert('Odrzucono godzinę');
+                    location.reload();
+                }
+            });
+        }
+    }
+</script>
+
 <!-- sktypt biblioteki DataTable -->
 <script>
     $("table").DataTable({
@@ -66,7 +91,7 @@
         columnDefs: [{
             orderable: false,
             searchable: false,
-            targets: [5, 4]
+            targets: [5, 6]
         }],
         language: {
             "decimal": "",

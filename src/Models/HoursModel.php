@@ -98,6 +98,16 @@ class HoursModel extends Model implements HoursModelInterface
         return $result;
     }
 
+    //funkcja odrzucająca godzinę
+    public function rejectHours($id)
+    {
+        $sql = "
+                UPDATE hours SET status_ho = 'ODRZUCONE' WHERE id = $id
+            ";
+        $result = $this->conn->query($sql);
+        return $result;
+    }
+
     //funkcja nadająca uprawnienia administratorskie
     public function addPermissions($id)
     {
@@ -183,6 +193,4 @@ class HoursModel extends Model implements HoursModelInterface
         $rows = $result->fetchAll(\PDO::FETCH_ASSOC);
         return $rows;
     }
-
-    // public function rejected
 }

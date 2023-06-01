@@ -23,4 +23,31 @@ class MyProfileModel extends Model implements MyProfileModelInterface
         $result = $this->conn->query($sql);
         return $result->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function editProfileInformation($data)
+    {
+        $sql = "
+            UPDATE users SET
+        ";
+
+        if (!empty($data['email'])) {
+            $sql .= " email = '{$data['email']}'";
+        }
+
+        if (!empty($data['phone'])) {
+            $sql .= ",phone = '{$data['phone']}'";
+        }
+
+        if (!empty($data['password'])) {
+            $hashedPassword = password_hash($data['password'], PASSWORD_DEFAULT);
+            $sql .= ",password = '{$hashedPassword}'";
+        }
+
+        $sql .= " WHERE id = {$_SESSION['user_id']}";
+
+        // var_dump($sql);
+
+        $result = $this->conn->query($sql);
+        return $result;
+    }
 }

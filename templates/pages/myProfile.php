@@ -2,7 +2,7 @@
     <div class="user-inf">
         <div class="row">
             <div class="col-md-4">
-                <img alt="" style="width:500px;" title="" class="img-circle img-thumbnail" src="pic/default_user.png">
+                <img alt="" style="width:500px; height:100%" title="" class="img-circle img-thumbnail" src="pic/default_user.png">
             </div>
             <div class="col-sm-12 col-md-10 col-lg-8">
                 <h5 class="text-uppercase mt-4 ms-2">Informacje o użytkowniku</h5><br>
@@ -71,8 +71,8 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="d-grid">
-                        <a href="myProfile/edit"><button class="btn btn-secondary btn-sm" type="button" id="editProfile">Edytuj profil </button></a>
+                    <div>
+                        <a class="d-grid text-decoration-none" href="myProfile/edit"><button class="btn btn-secondary btn-sm mb-1" type="button" id="editProfile">Edytuj profil</button></a>
                     </div>
                 </div>
             </div>

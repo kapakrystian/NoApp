@@ -41,12 +41,22 @@ class LeavetimeModel extends Model implements LeavetimeModelInterface
         return $result->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    //funkcja potwierdzająca godzinę
+    //funkcja potwierdzająca wydarzenie
     public function acceptLeavetime($id)
     {
         $sql = "
                 UPDATE events ev SET ev.status = 'POTWIERDZONE' WHERE ev.id = $id
             ";
+        $result = $this->conn->query($sql);
+        return $result;
+    }
+
+    //funkcja odrzucająca wydarzenie
+    public function rejectLeavetime($id)
+    {
+        $sql = "
+                    UPDATE events ev SET ev.status = 'ODRZUCONE' WHERE ev.id = $id
+                ";
         $result = $this->conn->query($sql);
         return $result;
     }
