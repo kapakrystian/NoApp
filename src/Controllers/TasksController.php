@@ -29,4 +29,24 @@ class TasksController extends Controller
         }
         $this->tasksModel->deleteTask($_POST['id']);
     }
+
+    public function editContentAction()
+    {
+        if (!empty($_POST)) {
+            // var_dump($_POST);
+            // exit();
+            $this->tasksModel->editTaskContent($_POST['id'], $_POST['title'], $_POST['content']);
+            $this->request->redirect('tasks');
+        }
+
+        if (!isset($_GET['id'])) {
+            echo 'error';
+            exit();
+        }
+
+        $taskId = $_GET['id'];
+        $task = $this->tasksModel->getTaskInformation($taskId);
+
+        $this->view->render('editTask', $task);
+    }
 }

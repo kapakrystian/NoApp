@@ -8,7 +8,7 @@
             <div class="col my-3">
                 <div class="card user-inf h-100">
                     <div class="card-header bg-secondary text-white d-flex justify-content-between">
-                        <h3 class="card-title text-dark text-uppercase mt-2"><?php echo $row['title']; ?></h3>
+                        <h3 class="card-title text-dark text-uppercase mt-2 w-100"><?php echo $row['title']; ?></h3>
                         <button type="button" class="btn-close" aria-label="Close" onclick="deleteTask(<?php echo $row['id'] ?>)"></button>
                     </div>
                     <div class="card-body bg-secondary text-white">
@@ -18,12 +18,15 @@
                     <div class="card-footer bg-secondary d-flex align-items-end justify-content-between">
                         <form>
                             <input type="hidden" name="task_id" value="<?php echo $row['id'] ?>" />
-                            <select class="form-select bg-secondary" name="task_stauts">
+                            <select class="form-select bg-secondary" style="border-color: white;" name="task_stauts">
                                 <option value="<?php echo TasksStatus::PENDING ?>" <?php echo $row['status'] == TasksStatus::PENDING ? 'selected' : '' ?>>Oczekujące</option>
                                 <option value="<?php echo TasksStatus::IN_PROGRESS ?>" <?php echo $row['status'] == TasksStatus::IN_PROGRESS ? 'selected' : '' ?>>Wykonywane</option>
                                 <option value="<?php echo TasksStatus::ENDING ?>" <?php echo $row['status'] == TasksStatus::ENDING ? 'selected' : '' ?>>Zakończone</option>
                             </select>
                         </form>
+                        <div>
+                            <a class="d-grid text-decoration-none" href="/tasks/editContent?id=<?php echo $row['id'] ?>"><button class="btn btn-secondary text-dark me-5" style="border-color: white;" type="button" id="editTaskContent">Edytuj</button></a>
+                        </div>
                         <div class="align-items-center mb-2">
                             <span class="text-dark">Autor: <?php echo $row['name_surname']; ?></span>
                         </div>

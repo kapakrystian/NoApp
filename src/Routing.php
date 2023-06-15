@@ -9,37 +9,38 @@ class Routing
         $controllerName = 'Login'; // domyślny kontroler
         $actionName = 'index'; // domyślna akcja
 
+
         $requestUri = $_SERVER['REQUEST_URI'];
         $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-        // usuwamy ewentualny znak zapytania
+        // usunięcie ewentualnego znaku zapytania
         $pos = strpos($requestUri, '?');
         if ($pos !== false) {
             $requestUri = substr($requestUri, 0, $pos);
         }
 
-        // dzielimy request URI na człony
+        // podzielenie request URI na człony
         $uriParts = explode('/', trim($requestUri, '/'));
 
-        // jeśli pierwszy człon jest nazwą kontrolera, to go ustawiamy
+        // jeśli pierwszy człon jest nazwą kontrolera, to go ustaw
         if (!empty($uriParts[0])) {
-            $controllerName = ucfirst(strtolower($uriParts[0]));
+            $controllerName = ucfirst($uriParts[0]);
         }
 
-        // jeśli drugi człon jest nazwą akcji, to ją ustawiamy
+        // jeśli drugi człon jest nazwą akcji, to ją ustaw
         if (!empty($uriParts[1])) {
             $actionName = strtolower($uriParts[1]);
         }
 
-        // dodajemy suffixy
+        // dodanie sufixów
         $controllerName .= 'Controller';
         $actionName .= 'Action';
-        // sprawdzamy, czy użytkownik jest zalogowany
+        // sprawdzenie czy użytkownik jest zalogowany
         session_start();
         $loggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
 
         // jeśli użytkownik nie jest zalogowany i próbuje dostać się do innej strony niż login lub register,
-        // to przekierowujemy go na stronę logowania
+        // to zostaje przekierowany na strone logowania
         if (!$loggedIn && $controllerName !== 'LoginController' && $controllerName !== 'RegisterController') {
             $controllerName = 'LoginController';
             $actionName = 'indexAction';
@@ -66,4 +67,3 @@ class Routing
         }
     }
 }
-

@@ -13,10 +13,10 @@
 
 <body>
 
-    <section>
-        <div class="container mt-5 pt-5 ms-5">
+    <section class="d-flex justify-content-center align-items-center me-lg-4">
+        <div class="container-fluid mt-5 pt-5">
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-10 col-lg-8 m-auto">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-10">
                     <h5 class="mt-5 md-3 text-uppercase">Logowanie do systemu NoApp</h5>
                     <div class="mt-4 card user-inf">
                         <div class="card-body">

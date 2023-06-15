@@ -49,4 +49,23 @@ class TasksModel extends Model implements TasksModelInterface
         $result = $this->conn->query($sql);
         return $result;
     }
+
+    public function editTaskContent($id, $title, $content)
+    {
+        $sql = "UPDATE tasks SET title = '{$title}', content = '{$content}' WHERE id = $id";
+        $result = $this->conn->query($sql);
+        return $result;
+    }
+
+    public function getTaskInformation($id)
+    {
+        $sql = "
+            SELECT ta.*
+            FROM tasks ta
+            WHERE ta.id = $id
+        ";
+
+        $result = $this->conn->query($sql);
+        return $result->fetch(\PDO::FETCH_ASSOC);
+    }
 }

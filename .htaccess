@@ -2,3 +2,7 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [QSA,L]
+RewriteRule ^([A-Z].*)$ /${strtolower($1)} [R=301,L]
+<IfModule mod_speling.c>
+    CheckSpelling off
+</IfModule>
