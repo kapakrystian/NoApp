@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 $username = 'admin_noapp';
 $dsn = 'mysql:host=localhost; dbname=noapp';
-$password = 'Madagaskar111!';
+$password = 'xxx';
 
 try {
     $db = new PDO($dsn, $username, $password);
